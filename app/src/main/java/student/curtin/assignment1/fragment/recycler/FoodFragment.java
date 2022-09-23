@@ -43,6 +43,20 @@ public class FoodFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FoodAdapter adapter = new FoodAdapter();
         rv.setAdapter(adapter);
+
+        TextView restTitle = view.findViewById(R.id.restaurant_title);
+        Button backButton = view.findViewById(R.id.back_button);
+
+        restTitle.setText(viewModel.getChoice().getRestName());
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.resetChoice();
+            }
+        });
+
+
         return view;
     }
 
@@ -90,7 +104,7 @@ public class FoodFragment extends Fragment {
                     if(f.getQuantity() > 0) {
                         cart.addToCart(f);
                         viewModel.setCart(cart);
-                        notifyItemChanged(vhPos);
+                        notifyItemInserted(vhPos);
                     }
                 }});
 

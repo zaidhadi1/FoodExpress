@@ -25,12 +25,15 @@ public class CommonData extends ViewModel
         return this.restaurantChoice.getValue();
     }
     public void setChoice(Restaurant restaurantChoice) { this.restaurantChoice.setValue(restaurantChoice); }
-    
+    public void resetChoice() {this.restaurantChoice.setValue(null);}
+
     public User getUser() {return this.user.getValue(); }
     public void setUser(User user) {
         this.user.setValue(user);
     }
+    public void resetUser(){this.user = new MutableLiveData<User>();}
 
     public Cart getCart() {return  this.cart.getValue(); }
     public void setCart(Cart cart) { this.cart.setValue(cart); }
+    public void resetCart(){this.cart = new MutableLiveData<Cart>();}
 }

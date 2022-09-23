@@ -51,8 +51,18 @@ public class MainActivity extends AppCompatActivity {
         viewModel.restaurantChoice.observe(this, new Observer<Restaurant>() {
             @Override
             public void onChanged(@Nullable Restaurant restaurant) {
-                FoodFragment foodFrag = new FoodFragment();
-                changeFrag(foodFrag);
+                Fragment fragment;
+
+                if(viewModel.getChoice() == null)
+                {
+                    fragment = new RestaurantFragment();
+                }
+                else
+                {
+                    fragment = new FoodFragment();
+                }
+
+                changeFrag(fragment);
             }
         });
 
@@ -67,7 +77,14 @@ public class MainActivity extends AppCompatActivity {
                         changeFrag(fragment);
                         break;
                     case R.id.nav_browse:
-                        fragment = new RestaurantFragment();
+                        if(viewModel.getChoice() == null)
+                        {
+                            fragment = new RestaurantFragment();
+                        }
+                        else
+                        {
+                            fragment = new FoodFragment();
+                        }
                         changeFrag(fragment);
                         break;
                     case R.id.nav_checkout:
