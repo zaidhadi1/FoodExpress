@@ -1,0 +1,58 @@
+package student.curtin.assignment1.model;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+
+
+public class Order {
+    private String email;
+    private String restName;
+    private int itemCount = 0;
+    private double totalCost = 0;
+    private String dateTime;
+    private LinkedList<Food> foodList;
+
+    public Order(String email, String restName)
+    {
+        this.email = email;
+        this.restName = restName;
+        this.foodList = new LinkedList<Food>();
+        this.dateTime = "";
+    }
+
+    public void addToDB(DBHandler dbHandler)
+    {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy mm:HH");
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        dbHandler.addOrderHistory_DB(email, restName, itemCount, totalCost, dtf.format(dateTime), foodList);
+    }
+
+    public void setFoodList(LinkedList<Food> foodList) {
+        this.foodList = foodList;
+
+        for(Food f: this.foodList)
+        {
+            this.itemCount += f.getQuantity();
+            this.totalCost += f.getPrice() * f.getQuantity();
+        }
+    }
+
+    public String getEmail(){ return this.email;}
+
+    public String getRestName(){ return this.restName;}
+
+    public int getItemCount(){ return this.itemCount;}
+
+    public double getTotalCost(){ return this.totalCost;}
+
+    public String getDateTime() {return this.dateTime;}
+
+    public LinkedList<Food> getFoodList(){ return this.foodList;}
+
+    private void setdateTime(String dateTime)
+    {
+        this.dateTime = dateTime;
+    }
+
+}
