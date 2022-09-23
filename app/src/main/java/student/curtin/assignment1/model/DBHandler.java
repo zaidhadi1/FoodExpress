@@ -329,7 +329,7 @@ public class DBHandler extends SQLiteOpenHelper {
     {
         /* Format: db, Restaurant Name, Restaurant Image */
 
-        addRestaurant_DB(db,"McDonalds", android.R.color.black);
+        addRestaurant_DB(db,"ABC", android.R.color.black);
         addRestaurant_DB(db,"KFC", android.R.color.black);
         addRestaurant_DB(db,"MCD", android.R.color.black);
         addRestaurant_DB(db,"DQ", android.R.color.black);

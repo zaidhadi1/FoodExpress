@@ -104,7 +104,7 @@ public class FoodFragment extends Fragment {
                     if(f.getQuantity() > 0) {
                         cart.addToCart(f);
                         viewModel.setCart(cart);
-                        notifyItemInserted(vhPos);
+                        notifyItemChanged(vhPos);
                     }
                 }});
 
