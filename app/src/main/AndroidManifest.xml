@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!--> Adding Permissions to access the database storage </!-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"

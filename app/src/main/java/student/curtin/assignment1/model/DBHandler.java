@@ -329,7 +329,7 @@ public class DBHandler extends SQLiteOpenHelper {
     {
         /* Format: db, Restaurant Name, Restaurant Image */
 
-        addRestaurant_DB(db,"ABC", android.R.color.black);
+        addRestaurant_DB(db,"McDonalds", android.R.color.black);
         addRestaurant_DB(db,"KFC", android.R.color.black);
         addRestaurant_DB(db,"MCD", android.R.color.black);
         addRestaurant_DB(db,"DQ", android.R.color.black);
@@ -350,7 +350,7 @@ public class DBHandler extends SQLiteOpenHelper {
     {
         /* Format: db, Food Name, Food Image, Food Price, Restaurant Name) */
 
-        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"ABC");
+        addFood_DB(db,"Quarter Pounder", android.R.color.black, 2.50 ,"McDonalds");
         addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"ABC");
         addFood_DB(db,"Tea", android.R.color.black, 3.00 ,"ABC");
         addFood_DB(db,"Espresso", android.R.color.black, 3.20 ,"ABC");
@@ -371,6 +371,7 @@ public class DBHandler extends SQLiteOpenHelper {
         addFood_DB(db,"4-Piece Spicy Chicken", android.R.color.black, 7.50 ,"KFC");
         addFood_DB(db,"8-Piece Spicy Chicken", android.R.color.black, 14.50 ,"KFC");
         addFood_DB(db,"Mash Potatoes", android.R.color.black, 5.00 ,"KFC");
+
 
     }
 

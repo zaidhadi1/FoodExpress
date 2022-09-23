@@ -31,9 +31,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="-30dp"
         android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textColor="#ff6b12"
         android:textStyle="bold"
-        android:text="Near me ↓ " />
+        android:text="Near me " />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

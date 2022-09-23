@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/food_recView">
-</androidx.recyclerview.widget.RecyclerView>
+    tools:context=".MainActivity"
+    android:background="#f0f0f0">
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="21dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/back_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/restaurant_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TITLE"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_margin="100dp"
+        android:textColor="@color/black"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/food_recView"
+        android:layout_marginTop="100dp"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
