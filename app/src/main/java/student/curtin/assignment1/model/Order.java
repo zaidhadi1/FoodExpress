@@ -23,7 +23,7 @@ public class Order {
     // Can be called by fragments and from DB Handler to create sample records
     public void addToDB(DBHandler dbHandler)
     {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm    dd/MM/yyyy");
         LocalDateTime dateTime = LocalDateTime.now();
         this.dateTime = dtf.format(dateTime);
 

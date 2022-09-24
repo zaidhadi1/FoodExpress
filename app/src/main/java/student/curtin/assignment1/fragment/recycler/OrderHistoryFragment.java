@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.R;
 import student.curtin.assignment1.fragment.recycler.RestaurantFragment;
 import student.curtin.assignment1.model.CommonData;
@@ -47,8 +48,8 @@ public class OrderHistoryFragment extends Fragment {
         return view;
     }
 
-    private class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryViewHolder> {
-
+    private class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryViewHolder>
+    {
         private List<Order> orderList;
 
         public OrderHistoryAdapter() {
@@ -59,7 +60,8 @@ public class OrderHistoryFragment extends Fragment {
         public OrderHistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View view = layoutInflater.inflate(R.layout.fragment_orderhistory_item, parent, false);
-            return new OrderHistoryViewHolder(view, parent);
+            OrderHistoryViewHolder vh = new OrderHistoryViewHolder(view, parent);
+            return vh;
         }
 
         @Override
@@ -95,9 +97,17 @@ public class OrderHistoryFragment extends Fragment {
             Restaurant restaurant = DBHandler.getInstance(getContext()).getRestaurantByName(order.getRestName());
             restName.setText(restaurant.getRestName());
             restImage.setImageResource(restaurant.getRestImage());
-            totalCost.setText(String.format("$ %s", Double.toString(order.getTotalCost())));
+            totalCost.setText(String.format("%.2f", Double.toString(order.getTotalCost())));
             itemCount.setText(String.format("%s items",order.getItemCount()));
             dateTime.setText(order.getDateTime());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    viewModel.setOrderSelection(order);
+                    MainActivity.changeFrag(new FoodOrderFragment());
+                }
+            });
         }
     }
 }
