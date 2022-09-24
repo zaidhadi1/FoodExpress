@@ -57,7 +57,7 @@
                         android:padding="10dp"
                         android:layout_marginTop="20dp"/>
 
-                   <TextView
+                   <EditText
                        android:id="@+id/username"
                        android:layout_width="370dp"
                        android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                        app:layout_constraintLeft_toLeftOf="parent"
                        app:layout_constraintBottom_toTopOf="@id/password"
                        android:padding="10dp"/>
-                   <TextView
+                   <EditText
                        android:id="@+id/password"
                        android:layout_width="370dp"
                        android:layout_height="wrap_content"
