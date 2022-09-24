@@ -7,6 +7,16 @@
     android:background="@color/white"
     tools:context=".fragment.user.RegisterFragment">
 
+    <Button
+        android:id="@+id/back_button_createAccount"
+        android:layout_width="21dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/back_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/create_your_account"
         android:layout_width="0dp"
