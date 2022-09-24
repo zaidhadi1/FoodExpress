@@ -25,6 +25,9 @@ import student.curtin.assignment1.model.Order;
 public class FoodOrderFragment extends Fragment {
 
     private CommonData viewModel;
+    private TextView restName;
+    private TextView dateTime;
+    private TextView total;
 
     public FoodOrderFragment() {
     }
@@ -38,6 +41,15 @@ public class FoodOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_foodorder, container, false);
+
+        restName = view.findViewById(R.id.orderRstName);
+        dateTime = view.findViewById(R.id.dateTime);
+        total = view.findViewById(R.id.total);
+
+        restName.setText(viewModel.getOrderSelection().getRestName());
+        dateTime.setText(viewModel.getOrderSelection().getDateTime());
+        total.setText(String.format("%.2f",viewModel.getOrderSelection().getTotalCost()));
+
         RecyclerView rv = view.findViewById(R.id.foodorder_recView);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FoodOrderAdapter adapter = new FoodOrderAdapter();
@@ -79,24 +91,24 @@ public class FoodOrderFragment extends Fragment {
         ImageView foodImage;
         TextView foodName;
         TextView foodPrice;
-        TextView quantity;
+//        TextView quantity;
 
         //Constructor
         public FoodOrderViewHolder(@NonNull View itemView, ViewGroup parent)
         {
             super(itemView);
-            foodImage = itemView.findViewById(R.id.foodImage);
-            foodName = itemView.findViewById(R.id.foodName);
-            foodPrice = itemView.findViewById(R.id.foodPrice);
-            quantity = itemView.findViewById(R.id.quantity);
+            foodImage = itemView.findViewById(R.id.foodorder_Image);
+            foodName = itemView.findViewById(R.id.foodorder_item);
+            foodPrice = itemView.findViewById(R.id.foodorder_item_price);
+//            quantity = itemView.findViewById(R.id.quantity);
         }
 
         public void bind(Food food)
         {
             foodName.setText(food.getFoodName());
             foodImage.setImageResource((int)food.getImage());
-            foodPrice.setText(Double.toString(food.getPrice()));
-            quantity.setText(Integer.toString(food.getQuantity()));
+            foodPrice.setText(String.format("%.2f",food.getPrice()));
+//            quantity.setText(Integer.toString(food.getQuantity()));
         }
     }
 }
