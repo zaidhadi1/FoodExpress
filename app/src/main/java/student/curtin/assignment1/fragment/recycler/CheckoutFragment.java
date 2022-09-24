@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.R;
 
 import android.widget.Button;
@@ -21,11 +22,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import student.curtin.assignment1.fragment.user.LaunchPageFragment;
 import student.curtin.assignment1.model.Cart;
 import student.curtin.assignment1.model.CommonData;
+import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Food;
+import student.curtin.assignment1.model.Order;
+import student.curtin.assignment1.model.User;
 
 /** NOT FINAL **/
 public class CheckoutFragment extends Fragment {
@@ -49,21 +55,37 @@ public class CheckoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
+        total = view.findViewById(R.id.final_total_result);
+        subtotal = view.findViewById(R.id.subtotal_result);
+
         RecyclerView rv = view.findViewById(R.id.checkout_recView);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         CheckoutAdapter adapter = new CheckoutAdapter();
         rv.setAdapter(adapter);
 
-        total = view.findViewById(R.id.final_total_result);
-        subtotal = view.findViewById(R.id.subtotal_result);
-
         checkoutButton = view.findViewById(R.id.checkoutButton);
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // TODO MAKE CHECKOUT BUTTON WORK
-                 //Prompt for login if User not specified
+            public void onClick(View view)
+            {
+                if(viewModel.getRestSelection() != null)
+                {
+                    if (viewModel.getUser().getEmail().equals(""))
+                    {
+                        MainActivity.changeFrag(new LaunchPageFragment());
+                    }
+                    else
+                    {
+                        Order order = new Order(viewModel.getUser().getEmail(),
+                                viewModel.getRestSelection().getRestName());
+                        order.setFoodList(adapter.getFoodList());
+                        order.addToDB(DBHandler.getInstance(getContext()));
 
+                        viewModel.resetCart();
+                        MainActivity.changeFrag(new HomeFragment());
+                    }
+
+                }
             }
         });
 
@@ -72,16 +94,13 @@ public class CheckoutFragment extends Fragment {
 
     private class CheckoutAdapter extends RecyclerView.Adapter<CheckoutViewHolder>{
 
-        private List<Food> foodList;
+        private LinkedList<Food> foodList;
 
         public CheckoutAdapter() {
             foodList = viewModel.getCart().getFoodList();
             totalCost = 0;
 
-            for(Food f: this.foodList)
-            {
-                totalCost += f.getPrice() * f.getQuantity();
-            }
+            calcTotalCost();
         }
 
         @Override
@@ -149,6 +168,8 @@ public class CheckoutFragment extends Fragment {
         @Override
         public int getItemCount() {return foodList.size();}
 
+        public LinkedList<Food> getFoodList() { return foodList; }
+
         public void calcTotalCost() {
             totalCost = 0;
             for(Food f: this.foodList)
@@ -156,8 +177,8 @@ public class CheckoutFragment extends Fragment {
                 totalCost += f.getPrice() * f.getQuantity();
             }
 
-            total.setText(Double.toString(totalCost));
-            subtotal.setText(Double.toString(totalCost));
+            total.setText(String.format("%.2f",totalCost));
+            subtotal.setText(String.format("%.2f",totalCost));
 
         }
     }
@@ -190,7 +211,7 @@ public class CheckoutFragment extends Fragment {
         {
             foodName.setText(f.getFoodName());
             foodImage.setImageResource((int)f.getImage());
-            foodPrice.setText(Double.toString(f.getPrice()));
+            foodPrice.setText(String.format("%.2f",f.getPrice()));
             quantity.setText(Integer.toString(f.getQuantity()));
 
         }

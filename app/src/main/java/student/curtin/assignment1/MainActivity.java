@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction().add(R.id.main_body, homeFrag).commit();
         }
 
-        // Consider observing User in viewModel to implement log in/out button
-
+        /*** DEPRECATED
         viewModel.restSelection.observe(this, new Observer<Restaurant>() {
             @Override
             public void onChanged(@Nullable Restaurant restaurant) {
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                 changeFrag(fragment);
             }
-        });
+        });***/
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

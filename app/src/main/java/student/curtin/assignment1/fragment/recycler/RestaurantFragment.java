@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.model.Cart;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.R;
@@ -89,6 +90,7 @@ public class RestaurantFragment extends Fragment {
                 public void onClick(View view) {
                     viewModel.setCart(new Cart());
                     viewModel.setRestSelection(restaurant);
+                    MainActivity.changeFrag(new FoodFragment());
                 }
             });
         }

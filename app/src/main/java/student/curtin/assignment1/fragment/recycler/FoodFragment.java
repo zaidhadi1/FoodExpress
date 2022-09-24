@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.model.Cart;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.R;
@@ -52,8 +53,7 @@ public class FoodFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // MainActivity Observes this and sends user to Back to Restaurant list
-                viewModel.resetRestSelection();
+                MainActivity.changeFrag(new RestaurantFragment());
             }
         });
 
