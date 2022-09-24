@@ -21,7 +21,6 @@ import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Food;
 import student.curtin.assignment1.model.Order;
-import student.curtin.assignment1.model.Restaurant;
 
 public class FoodOrderFragment extends Fragment {
 
@@ -51,7 +50,9 @@ public class FoodOrderFragment extends Fragment {
         private List<Food> foodList;
 
         public FoodOrderAdapter() {
-//            this.foodList = DBHandler.getInstance(getContext()).getFoodOrderList();
+            Order order = viewModel.getOrderSelection();
+            this.foodList = DBHandler.getInstance(getContext())
+                    .getFoodOrderList(order.getEmail(), order.getDateTime(), order.getRestName());
         }
 
         @Override
@@ -72,31 +73,30 @@ public class FoodOrderFragment extends Fragment {
         }
     }
 
-    private class FoodOrderViewHolder extends RecyclerView.ViewHolder {
+    private class FoodOrderViewHolder extends RecyclerView.ViewHolder
+    {
 
-//        TextView restName;
-//        ImageView restImage;
-//        TextView totalCost;
-//        TextView itemCount;
-//        TextView dateTime;
+        ImageView foodImage;
+        TextView foodName;
+        TextView foodPrice;
+        TextView quantity;
 
         //Constructor
-        public FoodOrderViewHolder(@NonNull View itemView, ViewGroup parent) {
+        public FoodOrderViewHolder(@NonNull View itemView, ViewGroup parent)
+        {
             super(itemView);
-//            restName = itemView.findViewById(R.id.restName);
-//            restImage = itemView.findViewById(R.id.restImage);
-//            totalCost = itemView.findViewById(R.id.totalCost);
-//            itemCount = itemView.findViewById(R.id.itemCount);
-//            dateTime = itemView.findViewById(R.id.dateTime);
+            foodImage = itemView.findViewById(R.id.foodImage);
+            foodName = itemView.findViewById(R.id.foodName);
+            foodPrice = itemView.findViewById(R.id.foodPrice);
+            quantity = itemView.findViewById(R.id.quantity);
         }
 
-        public void bind(Food order) {
-//            Restaurant restaurant = DBHandler.getInstance(getContext()).getRestaurantByName(order.getRestName());
-//            restName.setText(restaurant.getRestName());
-//            restImage.setImageResource(restaurant.getRestImage());
-//            totalCost.setText(String.format("$ %s", Double.toString(order.getTotalCost())));
-//            itemCount.setText(String.format("%s items",order.getItemCount()));
-//            dateTime.setText(order.getDateTime());
+        public void bind(Food food)
+        {
+            foodName.setText(food.getFoodName());
+            foodImage.setImageResource((int)food.getImage());
+            foodPrice.setText(Double.toString(food.getPrice()));
+            quantity.setText(Integer.toString(food.getQuantity()));
         }
     }
 }

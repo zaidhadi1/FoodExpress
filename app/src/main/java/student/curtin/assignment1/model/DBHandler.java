@@ -147,6 +147,19 @@ public class DBHandler extends SQLiteOpenHelper {
         } catch (SQLException e){}
     }
 
+    private void addUser_DB(SQLiteDatabase db, String email, String password)
+    {
+        ContentValues cv = new ContentValues();
+
+        cv.put(DBSchema.UserTable.Cols.EMAIL, email);
+        cv.put(DBSchema.UserTable.Cols.PASSWORD, password);
+
+        try
+        {
+            db.insertOrThrow(DBSchema.UserTable.TABLE_NAME, null, cv);
+        } catch (SQLException e){}
+    }
+
 
     /*** GETTERS ***/
 
@@ -321,7 +334,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return orderList;
     }
 
-    private LinkedList<Food> getFoodOrderList(String email, String time, String restName)
+    public LinkedList<Food> getFoodOrderList(String email, String time, String restName)
     {
         LinkedList<Food> foodList = new LinkedList<Food>();
         String[] where = {email,time};
@@ -441,8 +454,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private void updateUserTable(SQLiteDatabase db)
     {
-        addUser_DB("User1@gmail.com","User1");
-        addUser_DB("User2@gmail.com","User2");
+        addUser_DB(db,"User1@gmail.com","User1");
+        addUser_DB(db,"User2@gmail.com","User2");
     }
 
     private void updateOrderHistoryTable(SQLiteDatabase db)
