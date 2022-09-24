@@ -16,8 +16,8 @@ public class CommonData extends ViewModel
         this.user = new MutableLiveData<User>();
         this.cart = new MutableLiveData<Cart>();
 
-//        this.cart.setValue(new Cart());
-//        this.user.setValue(new User());
+        this.cart.setValue(new Cart());
+        this.user.setValue(new User());
         //this.restaurantChoice.setValue(null);
         //this.user.setValue(null);
     }

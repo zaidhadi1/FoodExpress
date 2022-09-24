@@ -124,13 +124,14 @@ public class CheckoutFragment extends Fragment {
                     if(f.getQuantity() > 0) {
                         // broken
                         cart.updateCartItem(f);
+                        notifyItemChanged(vhPos);
                     }
                     else //  otherwise remove
                     {
                         cart.removeFromCart(f);
+                        notifyItemRemoved(vhPos);
                     }
 
-                    notifyItemRemoved(vhPos);
                     viewModel.setCart(cart);
                     foodList = viewModel.getCart().getFoodList();
                     calcTotalCost();
