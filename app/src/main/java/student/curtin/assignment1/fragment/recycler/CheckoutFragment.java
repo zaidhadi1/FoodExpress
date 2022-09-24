@@ -107,14 +107,17 @@ public class CheckoutFragment extends Fragment {
 
                     // if quantity not zero then update,
                     if(f.getQuantity() > 0) {
+                        // broken
                         cart.updateCartItem(f);
                     }
                     else //  otherwise remove
                     {
                         cart.removeFromCart(f);
                     }
-                    notifyItemChanged(vhPos);
+
+                    notifyItemRemoved(vhPos);
                     viewModel.setCart(cart);
+                    foodList = viewModel.getCart().getFoodList();
 
                 }});
 
@@ -154,12 +157,13 @@ public class CheckoutFragment extends Fragment {
             plusButton = itemView.findViewById(R.id.plusButton);
         }
 
-        public void bind(Food food)
+        public void bind(Food f)
         {
-            foodName.setText(food.getFoodName());
-            foodImage.setImageResource((int)food.getImage());
-            foodPrice.setText(Double.toString(food.getPrice()));
-            quantity.setText(Integer.toString(food.getQuantity()));
+            foodName.setText(f.getFoodName());
+            foodImage.setImageResource((int)f.getImage());
+            foodPrice.setText(Double.toString(f.getPrice()));
+            quantity.setText(Integer.toString(f.getQuantity()));
+
         }
     }
 }
