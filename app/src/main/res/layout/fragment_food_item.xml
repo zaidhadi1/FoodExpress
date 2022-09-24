@@ -38,13 +38,24 @@
             android:id="@+id/foodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Price"
+            android:text="14.00"
             android:textSize="12dp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/foodImage"
+            app:layout_constraintLeft_toRightOf="@id/dollarsign"
             app:layout_constraintTop_toBottomOf="@id/foodName"/>
+
+    <TextView
+        android:id="@+id/dollarsign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="$"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/foodImage"
+        app:layout_constraintTop_toBottomOf="@id/foodName"/>
 
 
     <Button

@@ -31,6 +31,11 @@ import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Food;
 
+import java.io.ByteArrayOutputStream;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+
 public class HomeFragment extends Fragment {
 
     private CommonData viewModel;

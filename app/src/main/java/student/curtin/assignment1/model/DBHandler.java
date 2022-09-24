@@ -429,6 +429,7 @@ public class DBHandler extends SQLiteOpenHelper {
         addFood_DB(db,"Large Fries", android.R.color.black, 5.50 ,"McDonalds");
         addFood_DB(db,"Large Coke", android.R.color.black, 3.50 ,"McDonalds");
 
+
         addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Terrace Cafe");
         addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Terrace Cafe");
         addFood_DB(db,"Tea", android.R.color.black, 3.00 ,"Terrace Cafe");

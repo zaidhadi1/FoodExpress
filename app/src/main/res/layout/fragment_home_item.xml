@@ -19,7 +19,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/foodName"
-        app:srcCompat="@android:color/transparent"/>
+        />
 
     <TextView
         android:id="@+id/foodName"
@@ -28,8 +28,8 @@
         android:layout_marginLeft="20dp"
         android:text="Name"
         android:textSize="16dp"
+        android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/foodPrice"
         app:layout_constraintLeft_toRightOf="@id/foodImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,11 +37,22 @@
         android:id="@+id/foodPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Price"
+        android:text="13.00"
         android:textSize="12dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/dollarsign"
+        app:layout_constraintTop_toBottomOf="@id/foodName"/>
+
+    <TextView
+        android:id="@+id/dollarsign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="$"
+        android:textSize="12dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toRightOf="@id/foodImage"
         app:layout_constraintTop_toBottomOf="@id/foodName"/>
 
