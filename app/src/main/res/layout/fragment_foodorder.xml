@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/back_button_orders"
+        android:layout_width="21dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/back_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/rest_background_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:background="@drawable/rest_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/orderRstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nandos"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/rest_background_pic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/order_completed"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:textSize="31sp"/>
+    <TextView
+        android:id="@+id/order_completed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Completed"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/orderRstName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#6c6c6c"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/dateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09 August 7.15pm"
+        app:layout_constraintTop_toBottomOf="@id/orderRstName"
+        app:layout_constraintLeft_toRightOf="@id/order_completed"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#6c6c6c"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/yourOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your order"
+        app:layout_constraintTop_toBottomOf="@id/order_completed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/foodorder_recView"/>
-</RelativeLayout>
+        android:id="@+id/foodorder_recView"
+        android:layout_marginTop="220dp"/>
+
+    <TextView
+        android:id="@+id/total_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/foodorder_recView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18dp"
+        android:text="Total"
+        android:textColor="#b5b5b5"
+        />
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/foodorder_recView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18dp"
+        android:text="Total"
+        android:textColor="#b5b5b5"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
