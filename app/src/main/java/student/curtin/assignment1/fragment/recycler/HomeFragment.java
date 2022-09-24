@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.R;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +21,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import student.curtin.assignment1.fragment.user.LoginFragment;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Food;
@@ -30,6 +34,7 @@ import student.curtin.assignment1.model.Food;
 public class HomeFragment extends Fragment {
 
     private CommonData viewModel;
+    private Button LogInOutButton;
     public HomeFragment() {}
 
     @Override
@@ -44,6 +49,30 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        LogInOutButton = view.findViewById(R.id.loginButton);
+        if(viewModel.getUser().getEmail().equals(""))
+        {
+            LogInOutButton.setText("Log in");
+            LogInOutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MainActivity.changeFrag(new LoginFragment());
+                }
+            });
+        }
+        else
+        {
+            LogInOutButton.setText("Log out");
+            LogInOutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    viewModel.resetUser();
+                    MainActivity.changeFrag(new HomeFragment());
+                }
+            });
+        }
+
         RecyclerView rv = view.findViewById(R.id.home_recView);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         HomeAdapter adapter = new HomeAdapter();
@@ -57,7 +86,7 @@ public class HomeFragment extends Fragment {
         public HomeAdapter(){
 
             foodList = new LinkedList<Food>();
-            Random rng = new Random();
+            Random rng = new Random(LocalDateTime.MAX.getDayOfMonth()); // Special Menu Depends on Day Of Month
             List<Food> allFoods = DBHandler.getInstance(getActivity()).getFoodList();
             int i = 0;
             // Grab 7 random items to display
@@ -112,7 +141,7 @@ public class HomeFragment extends Fragment {
         {
             foodName.setText(food.getFoodName());
             foodImage.setImageResource((int)food.getImage());
-            foodPrice.setText(Double.toString(food.getPrice()));
+            foodPrice.setText(String.format("%.2f",food.getPrice()));
             restName.setText(food.getRestName());
         }
     }

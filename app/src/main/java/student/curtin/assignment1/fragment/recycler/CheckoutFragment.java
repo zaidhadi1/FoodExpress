@@ -25,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.LinkedList;
 import java.util.List;
 
-import student.curtin.assignment1.fragment.user.LaunchPageFragment;
+import student.curtin.assignment1.fragment.user.LoginFragment;
 import student.curtin.assignment1.model.Cart;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
@@ -68,11 +68,11 @@ public class CheckoutFragment extends Fragment {
             @Override
             public void onClick(View view)
             {
-                if(viewModel.getRestSelection() != null || adapter.getFoodList().isEmpty())
+                if(viewModel.getRestSelection() != null || !adapter.getFoodList().isEmpty())
                 {
                     if (viewModel.getUser().getEmail().equals(""))
                     {
-                        MainActivity.changeFrag(new LaunchPageFragment());
+                        MainActivity.changeFrag(new LoginFragment());
                     }
                     else
                     {
@@ -84,7 +84,6 @@ public class CheckoutFragment extends Fragment {
                         viewModel.resetCart();
                         MainActivity.changeFrag(new HomeFragment());
                     }
-
                 }
             }
         });

@@ -1,4 +1,5 @@
-package student.curtin.assignment1.fragment.user;
+/***package student.curtin.assignment1.fragment.user;
+
 
 import android.os.Bundle;
 
@@ -53,3 +54,4 @@ public class LaunchPageFragment extends Fragment {
         return view;
     }
 }
+ ***/

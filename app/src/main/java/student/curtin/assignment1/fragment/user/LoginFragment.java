@@ -17,6 +17,8 @@ import android.widget.TextView;
 import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.R;
 import student.curtin.assignment1.fragment.recycler.CheckoutFragment;
+import student.curtin.assignment1.fragment.recycler.HomeFragment;
+import student.curtin.assignment1.fragment.recycler.OrderHistoryFragment;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.User;
@@ -25,6 +27,7 @@ public class LoginFragment extends Fragment {
 
     private CommonData viewModel;
     Button login;
+    Button registerButton;
     TextView emailBox;
     TextView passwordBox;
     TextView infoBox;
@@ -45,6 +48,7 @@ public class LoginFragment extends Fragment {
         emailBox = view.findViewById(R.id.email);
         passwordBox = view.findViewById(R.id.password);
         infoBox = view.findViewById(R.id.login_info);
+        registerButton = view.findViewById(R.id.registerButton);
 
         login.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -59,8 +63,21 @@ public class LoginFragment extends Fragment {
                     User user = new User(email,password);
                     if(dbHandler.validateUser(user)){
                         viewModel.setUser(user);
-                        Fragment frag = new CheckoutFragment();
-                        MainActivity.changeFrag(frag);
+
+                        // Go back to screen based on last selected navigation item
+                        switch(MainActivity.getSelectedNavItem())
+                        {
+                            case R.id.nav_home:
+                                MainActivity.changeFrag(new HomeFragment());
+                                break;
+
+                            case R.id.nav_checkout:
+                                MainActivity.changeFrag(new CheckoutFragment());
+                                break;
+
+                            case R.id.nav_orders:
+                                MainActivity.changeFrag(new OrderHistoryFragment());
+                        }
                     }
                     else
                     {
@@ -75,6 +92,15 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View view) {
+                MainActivity.changeFrag(new RegisterFragment());
+            }
+        });
+
         return view;
     }
 }

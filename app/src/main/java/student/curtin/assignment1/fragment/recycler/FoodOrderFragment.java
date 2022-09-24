@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.R;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
@@ -28,6 +30,7 @@ public class FoodOrderFragment extends Fragment {
     private TextView restName;
     private TextView dateTime;
     private TextView total;
+    private Button backButton;
 
     public FoodOrderFragment() {
     }
@@ -45,7 +48,7 @@ public class FoodOrderFragment extends Fragment {
         restName = view.findViewById(R.id.orderRstName);
         dateTime = view.findViewById(R.id.dateTime);
         total = view.findViewById(R.id.total);
-
+        backButton = view.findViewById(R.id.back_button_orders);
         restName.setText(viewModel.getOrderSelection().getRestName());
         dateTime.setText(viewModel.getOrderSelection().getDateTime());
         total.setText(String.format("%.2f",viewModel.getOrderSelection().getTotalCost()));
@@ -54,6 +57,15 @@ public class FoodOrderFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FoodOrderAdapter adapter = new FoodOrderAdapter();
         rv.setAdapter(adapter);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.resetOrderSelection();
+                MainActivity.changeFrag(new OrderHistoryFragment());
+            }
+        });
+
         return view;
     }
 
@@ -88,27 +100,24 @@ public class FoodOrderFragment extends Fragment {
     private class FoodOrderViewHolder extends RecyclerView.ViewHolder
     {
 
-        ImageView foodImage;
         TextView foodName;
         TextView foodPrice;
-//        TextView quantity;
+        TextView quantity;
 
         //Constructor
         public FoodOrderViewHolder(@NonNull View itemView, ViewGroup parent)
         {
             super(itemView);
-            foodImage = itemView.findViewById(R.id.foodorder_Image);
             foodName = itemView.findViewById(R.id.foodorder_item);
             foodPrice = itemView.findViewById(R.id.foodorder_item_price);
-//            quantity = itemView.findViewById(R.id.quantity);
+            quantity = itemView.findViewById(R.id.foodorder_Image);
         }
 
         public void bind(Food food)
         {
             foodName.setText(food.getFoodName());
-            foodImage.setImageResource((int)food.getImage());
             foodPrice.setText(String.format("%.2f",food.getPrice()));
-//            quantity.setText(Integer.toString(food.getQuantity()));
+            quantity.setText(Integer.toString(food.getQuantity()));
         }
     }
 }

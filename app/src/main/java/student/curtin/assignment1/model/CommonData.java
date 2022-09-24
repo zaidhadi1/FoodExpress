@@ -35,7 +35,7 @@ public class CommonData extends ViewModel
     public void setUser(User user) {
         this.user.setValue(user);
     }
-    public void resetUser(){this.user.setValue(null);}
+    public void resetUser(){this.user.setValue(new User());}
 
     public Cart getCart() {return  this.cart.getValue(); }
     public void setCart(Cart cart) { this.cart.setValue(cart); }

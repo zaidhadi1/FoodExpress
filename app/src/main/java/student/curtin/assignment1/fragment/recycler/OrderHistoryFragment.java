@@ -97,7 +97,7 @@ public class OrderHistoryFragment extends Fragment {
             Restaurant restaurant = DBHandler.getInstance(getContext()).getRestaurantByName(order.getRestName());
             restName.setText(restaurant.getRestName());
             restImage.setImageResource(restaurant.getRestImage());
-            totalCost.setText(String.format("%.2f", Double.toString(order.getTotalCost())));
+            totalCost.setText(String.format("%.2f",order.getTotalCost()));
             itemCount.setText(String.format("%s items",order.getItemCount()));
             dateTime.setText(order.getDateTime());
 
