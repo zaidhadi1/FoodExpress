@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import student.curtin.assignment1.MainActivity;
 import student.curtin.assignment1.R;
+import student.curtin.assignment1.fragment.recycler.CheckoutFragment;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.User;
@@ -50,15 +51,15 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 DBHandler dbHandler = DBHandler.getInstance(getContext());
-                String email = (String) emailBox.getText();
-                String password = (String) passwordBox.getText();
+                String email = emailBox.getText().toString();
+                String password = passwordBox.getText().toString();
 
                 if(dbHandler.checkUserExists(email)) {
 
                     User user = new User(email,password);
                     if(dbHandler.validateUser(user)){
                         viewModel.setUser(user);
-                        Fragment frag = new LaunchPageFragment();
+                        Fragment frag = new CheckoutFragment();
                         MainActivity.changeFrag(frag);
                     }
                     else

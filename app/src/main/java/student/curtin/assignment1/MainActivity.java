@@ -20,6 +20,8 @@ import student.curtin.assignment1.fragment.recycler.FoodFragment;
 import student.curtin.assignment1.fragment.recycler.HomeFragment;
 import student.curtin.assignment1.fragment.recycler.OrderHistoryFragment;
 import student.curtin.assignment1.fragment.recycler.RestaurantFragment;
+import student.curtin.assignment1.fragment.user.LaunchPageFragment;
+import student.curtin.assignment1.fragment.user.LoginFragment;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Restaurant;
@@ -94,7 +96,14 @@ public class MainActivity extends AppCompatActivity {
                         changeFrag(fragment);
                         break;
                     case R.id.nav_orders:
+                        if(viewModel.getUser().getEmail().equals(""))
+                        {
+                            fragment = new LaunchPageFragment();
+                        }
+                        else
+                        {
                         fragment = new OrderHistoryFragment();
+                        }
                         changeFrag(fragment);
                         break;
                 }

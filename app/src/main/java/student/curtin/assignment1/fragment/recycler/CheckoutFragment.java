@@ -68,7 +68,7 @@ public class CheckoutFragment extends Fragment {
             @Override
             public void onClick(View view)
             {
-                if(viewModel.getRestSelection() != null)
+                if(viewModel.getRestSelection() != null || adapter.getFoodList().isEmpty())
                 {
                     if (viewModel.getUser().getEmail().equals(""))
                     {
@@ -210,7 +210,7 @@ public class CheckoutFragment extends Fragment {
         public void bind(Food f)
         {
             foodName.setText(f.getFoodName());
-            foodImage.setImageResource((int)f.getImage());
+            foodImage.setImageResource(f.getImage());
             foodPrice.setText(String.format("%.2f",f.getPrice()));
             quantity.setText(Integer.toString(f.getQuantity()));
 

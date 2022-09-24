@@ -47,9 +47,9 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 DBHandler dbHandler = DBHandler.getInstance(getContext());
-                String email = (String) emailBox.getText();
-                String password = (String) passwordBox.getText();
-                String confirmPassword = (String) passwordBox2.getText();
+                String email = emailBox.getText().toString();
+                String password = passwordBox.getText().toString();
+                String confirmPassword = passwordBox2.getText().toString();
                 if(!(email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()))
                 {
                     if (!dbHandler.checkUserExists(email)) {
