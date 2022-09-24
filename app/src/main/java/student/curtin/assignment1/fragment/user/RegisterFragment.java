@@ -20,6 +20,7 @@ import student.curtin.assignment1.model.DBHandler;
 public class RegisterFragment extends Fragment {
 
     Button register;
+    Button backButton;
     TextView emailBox;
     TextView passwordBox;
     TextView passwordBox2;
@@ -41,6 +42,7 @@ public class RegisterFragment extends Fragment {
         passwordBox = view.findViewById(R.id.new_password);
         passwordBox2 = view.findViewById(R.id.confirm_password);
         register_info = view.findViewById(R.id.register_info);
+        backButton = view.findViewById(R.id.back_button_createAccount);
 
         register.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -56,7 +58,7 @@ public class RegisterFragment extends Fragment {
 
                         if (password.equals(confirmPassword)) {
                             dbHandler.addUser_DB(email, password);
-                            Fragment frag = new LaunchPageFragment();
+                            Fragment frag = new LoginFragment();
                             MainActivity.changeFrag(frag);
                         } else {
                             register_info.setTextColor(R.color.red);
@@ -72,6 +74,13 @@ public class RegisterFragment extends Fragment {
                     register_info.setTextColor(R.color.red);
                     register_info.setText("ERROR : All fields must be filled.");
                 }
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.changeFrag(new LoginFragment());
             }
         });
         return view;

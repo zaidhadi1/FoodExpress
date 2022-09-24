@@ -20,7 +20,6 @@ import student.curtin.assignment1.fragment.recycler.FoodFragment;
 import student.curtin.assignment1.fragment.recycler.HomeFragment;
 import student.curtin.assignment1.fragment.recycler.OrderHistoryFragment;
 import student.curtin.assignment1.fragment.recycler.RestaurantFragment;
-import student.curtin.assignment1.fragment.user.LaunchPageFragment;
 import student.curtin.assignment1.fragment.user.LoginFragment;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CommonData viewModel;
     private DBHandler dbHandler;
+    private static BottomNavigationView bottomNavigationView;
     private static FragmentManager fm;
 
     @Override
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         dbHandler = DBHandler.getInstance(this);
         viewModel = new ViewModelProvider(this).get(CommonData.class);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
+        bottomNavigationView = findViewById(R.id.bottom_navbar);
 
         fm = getSupportFragmentManager();
         HomeFragment homeFrag = (HomeFragment) fm.findFragmentById(R.id.main_body);
@@ -50,25 +50,6 @@ public class MainActivity extends AppCompatActivity {
             homeFrag = new HomeFragment();
             fm.beginTransaction().add(R.id.main_body, homeFrag).commit();
         }
-
-        /*** DEPRECATED
-        viewModel.restSelection.observe(this, new Observer<Restaurant>() {
-            @Override
-            public void onChanged(@Nullable Restaurant restaurant) {
-                Fragment fragment;
-
-                if(viewModel.getRestSelection() == null)
-                {
-                    fragment = new RestaurantFragment();
-                }
-                else
-                {
-                    fragment = new FoodFragment();
-                }
-
-                changeFrag(fragment);
-            }
-        });***/
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -98,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_orders:
                         if(viewModel.getUser().getEmail().equals(""))
                         {
-                            fragment = new LaunchPageFragment();
+                            fragment = new LoginFragment();
                         }
                         else
                         {
@@ -118,44 +99,9 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().replace(R.id.main_body, fragment).commit();
     }
 
+    public static int getSelectedNavItem()
+    {
+        return bottomNavigationView.getSelectedItemId();
+    }
+
 }
-
-/**
- RestaurantFragment restaurantFrag = (RestaurantFragment) fm.findFragmentById(R.id.main_body);
-
- if(restaurantFrag == null) {
- restaurantFrag = new RestaurantFragment();
- fm.beginTransaction().add(R.id.main_body, restaurantFrag).commit();
- }
- this is the original code. below is the altered
- */
-/** // Instantiate home page Homefragment
- HomeFragment homeFrag = (HomeFragment) fm.findFragmentById(R.id.home_container);
- if(homeFrag == null) {
- homeFrag = new HomeFragment();
- fm.beginTransaction().add(R.id.home_container, homeFrag).commit();
- }
-
- // Instantiate browse BrowseFragment
- BrowseFragment browseFrag = (BrowseFragment) fm.findFragmentById(R.id.browse_container);
- if(browseFrag == null) {
- browseFrag = new BrowseFragment();
- fm.beginTransaction().add(R.id.browse_container, browseFrag).commit();
- } **/
-/**
- // Instantiate bottom NAVBAR fragment
- NavBarFragment navFrag = (NavBarFragment) fm.findFragmentById(R.id.navbar);
- if(navFrag == null) {
- navFrag = new NavBarFragment();
- fm.beginTransaction().add(R.id.navbar, navFrag).commit();
- }
-
- viewModel.restaurantChoice.observe(this, new Observer<Restaurant>() {
-@Override
-public void onChanged(@Nullable Restaurant restaurant) {
-FoodFragment foodFrag = new FoodFragment();
-fm.beginTransaction().replace(R.id.main_body, foodFrag).commit(); //changed from main_body to broswe to browse
-}
-}); */
-
-/**nav_home etc*/

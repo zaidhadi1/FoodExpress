@@ -613,10 +613,6 @@ public class DBHandler extends SQLiteOpenHelper {
         addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Spice Market");
         addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Spice Market");
 
-
-
-
-
     }
 
     private void updateUserTable(SQLiteDatabase db)

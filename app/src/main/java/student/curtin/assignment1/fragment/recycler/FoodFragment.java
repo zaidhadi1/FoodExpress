@@ -148,7 +148,7 @@ public class FoodFragment extends Fragment {
         {
             foodName.setText(food.getFoodName());
             foodImage.setImageResource((int)food.getImage());
-            foodPrice.setText(Double.toString(food.getPrice()));
+            foodPrice.setText(String.format("%.2f",food.getPrice()));
             quantity.setText(Integer.toString(food.getQuantity()));
         }
     }
