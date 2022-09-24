@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="#f0f0f0">
+
+
     <TextView
         android:id="@+id/checkout_title"
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
         android:textSize="30sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:paddingLeft="20dp"
         android:lines="2"
         android:background="#f0f0f0"
@@ -25,7 +27,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="369dp"
             android:id="@+id/checkout_recView"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/checkout_title"
@@ -45,8 +47,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/checkout_recView"
-        app:layout_constraintVertical_bias="1.0" />
+         />
     <TextView
         android:id="@+id/subtotal"
         android:layout_width="wrap_content"
@@ -74,7 +77,7 @@
         android:gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="@id/checkout_background"
         app:layout_constraintTop_toBottomOf="@id/subtotal" />
     <TextView
@@ -87,7 +90,7 @@
         android:textStyle="bold"
         android:textSize="14dp"
         android:gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="@id/delivery"
         app:layout_constraintTop_toBottomOf="@id/delivery" />
 
@@ -101,19 +104,19 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="@id/dot"
         app:layout_constraintTop_toBottomOf="@id/dot" />
 
     <Button
         android:id="@+id/checkoutButton"
-        android:layout_width="260dp"
+        android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Checkout"
         android:background="@drawable/submit_login_button"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/checkout_background"
         app:layout_constraintLeft_toLeftOf="@id/checkout_background"
         app:layout_constraintStart_toStartOf="@+id/checkout_background"
         app:layout_constraintTop_toBottomOf="@id/total" />
@@ -123,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="$0.00"
+        android:text="0.00"
         android:textColor="#545454"
         android:textStyle="bold"
         android:textSize="16dp"
@@ -132,33 +135,76 @@
         android:layout_marginTop="30dp"
         app:layout_constraintRight_toRightOf="@id/checkout_background"
         app:layout_constraintTop_toTopOf="@id/checkout_background" />
+    <TextView
+        android:id="@+id/dollarsign_subtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="$"
+        android:textColor="#545454"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="1dp"
+        app:layout_constraintRight_toLeftOf="@id/subtotal_result"
+        app:layout_constraintTop_toTopOf="@id/checkout_background" />
+
 
     <TextView
         android:id="@+id/deliveryfee_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="$0.00"
+        android:text="0.00"
         android:textColor="#545454"
         android:textStyle="bold"
         android:textSize="16dp"
         android:gravity="center"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintRight_toRightOf="@id/checkout_background"
         app:layout_constraintTop_toBottomOf="@id/subtotal_result" />
+
+    <TextView
+        android:id="@+id/dollarsign_deliveryfee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="$"
+        android:textColor="#545454"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="1dp"
+        app:layout_constraintRight_toLeftOf="@id/deliveryfee_result"
+        app:layout_constraintTop_toBottomOf="@id/dollarsign_subtotal" />
     <TextView
         android:id="@+id/final_total_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="$0.00"
+        android:text="0.00"
         android:textColor="#545454"
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintRight_toRightOf="@id/checkout_background"
+        app:layout_constraintTop_toBottomOf="@id/dot" />
+    <TextView
+        android:id="@+id/dollarsign_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="$"
+        android:textColor="#545454"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintRight_toLeftOf="@id/final_total_result"
         app:layout_constraintTop_toBottomOf="@id/dot" />
 </androidx.constraintlayout.widget.ConstraintLayout>
