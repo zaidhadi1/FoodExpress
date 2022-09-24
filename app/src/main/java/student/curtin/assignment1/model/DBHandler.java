@@ -397,20 +397,20 @@ public class DBHandler extends SQLiteOpenHelper {
 
         addRestaurant_DB(db,"McDonalds", android.R.color.black);
         addRestaurant_DB(db,"Terrace Cafe", android.R.color.black);
+        addRestaurant_DB(db,"Zambrero", android.R.color.black);
+        addRestaurant_DB(db,"Dominos", android.R.color.black);
+        addRestaurant_DB(db,"Subway", android.R.color.black);
+        addRestaurant_DB(db,"Nandos", android.R.color.black);
+        addRestaurant_DB(db,"Gelare", android.R.color.black);
+        addRestaurant_DB(db,"Grilld", android.R.color.black);
+        addRestaurant_DB(db,"Kebabalicous", android.R.color.black);
+        addRestaurant_DB(db,"Sushi Sushi", android.R.color.black);
+        addRestaurant_DB(db,"Hungry Jacks", android.R.color.black);
+        addRestaurant_DB(db,"Tony's Italian", android.R.color.black);
         addRestaurant_DB(db,"KFC", android.R.color.black);
-        addRestaurant_DB(db,"MCD", android.R.color.black);
-        addRestaurant_DB(db,"DQ", android.R.color.black);
-        addRestaurant_DB(db,"CHT", android.R.color.black);
-        addRestaurant_DB(db,"SUB", android.R.color.black);
-        addRestaurant_DB(db,"YOT", android.R.color.black);
-        addRestaurant_DB(db,"MAL", android.R.color.black);
-        addRestaurant_DB(db,"GIN", android.R.color.black);
-        addRestaurant_DB(db,"HJ", android.R.color.black);
-        addRestaurant_DB(db,"ZAM", android.R.color.black);
-        addRestaurant_DB(db,"DEF", android.R.color.black);
-        addRestaurant_DB(db,"GHI", android.R.color.black);
-        addRestaurant_DB(db,"PZH", android.R.color.black);
-        addRestaurant_DB(db,"DOM", android.R.color.black);
+        addRestaurant_DB(db,"Chicken Treat", android.R.color.black);
+        addRestaurant_DB(db,"Tao Cafe", android.R.color.black);
+        addRestaurant_DB(db,"Spice Market", android.R.color.black);
     }
 
     private void updateFoodItemTable(SQLiteDatabase db)
@@ -418,10 +418,11 @@ public class DBHandler extends SQLiteOpenHelper {
         /* Format: db, Food Name, Food Image, Food Price, Restaurant Name) */
 
         addFood_DB(db,"Quarter-Pounder", android.R.color.black, 8.50 ,"McDonalds");
+        addFood_DB(db,"Cheeseburger", android.R.color.black, 8.50 ,"McDonalds");
+        addFood_DB(db,"Classic Angus", android.R.color.black, 8.50 ,"McDonalds");
         addFood_DB(db,"Fillet-o-fish", android.R.color.black, 4.50 ,"McDonalds");
         addFood_DB(db,"Big Mac", android.R.color.black, 9.50 ,"McDonalds");
         addFood_DB(db,"Mc Chicken", android.R.color.black, 7.50 ,"McDonalds");
-        addFood_DB(db,"McMuffin", android.R.color.black, 5.00 ,"McDonalds");
         addFood_DB(db,"Hashbrown", android.R.color.black, 2.00 ,"McDonalds");
         addFood_DB(db,"Nuggets 4pc", android.R.color.black, 3.50 ,"McDonalds");
         addFood_DB(db,"Nuggets 12pc", android.R.color.black, 10.00 ,"McDonalds");
@@ -445,11 +446,178 @@ public class DBHandler extends SQLiteOpenHelper {
         addFood_DB(db,"Steak Sandwich", android.R.color.black, 22.50 ,"Terrace Cafe");
         addFood_DB(db,"Bacon-Egg Wrap", android.R.color.black, 20.00 ,"Terrace Cafe");
 
-        addFood_DB(db,"4-Piece Chicken", android.R.color.black, 5.50 ,"KFC");
-        addFood_DB(db,"8-Piece Chicken", android.R.color.black, 12.50 ,"KFC");
-        addFood_DB(db,"4-Piece Spicy Chicken", android.R.color.black, 7.50 ,"KFC");
-        addFood_DB(db,"8-Piece Spicy Chicken", android.R.color.black, 14.50 ,"KFC");
-        addFood_DB(db,"Mash Potatoes", android.R.color.black, 5.00 ,"KFC");
+        addFood_DB(db,"Chicken Burrito", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Chicken Nachos", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Soft Taco", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Hard Taco", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Quesadilla", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Zambrero");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Zambrero");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Zambrero");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Zambrero");
+
+        addFood_DB(db,"Vegetarian", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Pepperoni", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Meat Lovers", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Hawaiian", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Margarita", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Dominos");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Dominos");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Dominos");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Dominos");
+
+        addFood_DB(db,"BLT", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Buffalo Chicken", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Chicken Teriyaki", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Turkey", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Meatball Melt", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Subway");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Subway");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Subway");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Subway");
+
+        addFood_DB(db,"Classic Pita", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Classic Wrap", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Grilled tenders", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Whole Chicken", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"BBQ Ribs", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Nandos");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Nandos");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Nandos");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Nandos");
+
+        addFood_DB(db,"Chocolate", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Vanilla", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Strawberry", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Choc Chip", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Banana", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Gelare");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Gelare");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Gelare");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Gelare");
+
+        addFood_DB(db,"Simply Grilld", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Simon Says", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Summer Sunset", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Crispy Bacon & Cheese", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Mighty Melbourne", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Grilld");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Grilld");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Grilld");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Grilld");
+
+        addFood_DB(db,"Chicken Kebab", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Lamb Kebab", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Beef Kebab", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Falafel Kebab", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Chips", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Kebabalicous");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Kebabalicous");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Kebabalicous");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Kebabalicous");
+
+        addFood_DB(db,"Chicken Teriyaki Sushi", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Salmon Sushi", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Avocado Rolls", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Tuna Sushi", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Californa Rolls", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Sushi Sushi");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Sushi Sushi");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Sushi Sushi");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Sushi Sushi");
+
+        addFood_DB(db,"Whopper", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Memphis Grilled Chicken", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Pop'n Chicken", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Double Whopper", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Memphis Fried Chicken", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Hungry Jacks");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Hungry Jacks");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Hungry Jacks");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Hungry Jacks");
+
+        addFood_DB(db,"Spaghetti Bolognese", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Lasagne", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Gnocci", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Spaghetti Carbonara", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Garlic Bread", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Tony's Italian");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Tony's Italian");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Tony's Italian");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Tony's Italian");
+
+        addFood_DB(db,"Zinger Wrap", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Grilled Chicken", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Pop'n Chicken", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Zinger Burger", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Double Tender Burger", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"KFC");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"KFC");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"KFC");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"KFC");
+
+        addFood_DB(db,"Quarter Chicken", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Half Chicken", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Half Hawaiian", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Family Classic", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Chips", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Chicken Treat");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Chicken Treat");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Chicken Treat");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Chicken Treat");
+
+        addFood_DB(db,"Laksa Soup", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Tom Yum Soup", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Chiang Mai Noodles", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Pad Thai Noodles", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Thai Red Curry", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Tao Cafe");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Tao Cafe");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Tao Cafe");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Tao Cafe");
+
+        addFood_DB(db,"Chicken Basil Noodle", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Satay Noodle", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Pad Sewiw", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Chicken Fried Rice", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Sweet and Sour Pork", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Water", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Sparkling Water", android.R.color.black, 25.00 ,"Spice Market");
+        addFood_DB(db,"Coke", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Coke No Sugar", android.R.color.black, 25.00 ,"Spice Market");
+        addFood_DB(db,"Sprite", android.R.color.black, 2.50 ,"Spice Market");
+        addFood_DB(db,"Fanta", android.R.color.black, 25.00 ,"Spice Market");
+
+
+
+
+
     }
 
     private void updateUserTable(SQLiteDatabase db)
