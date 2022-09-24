@@ -20,6 +20,8 @@ import student.curtin.assignment1.fragment.recycler.FoodFragment;
 import student.curtin.assignment1.fragment.recycler.HomeFragment;
 import student.curtin.assignment1.fragment.recycler.OrderHistoryFragment;
 import student.curtin.assignment1.fragment.recycler.RestaurantFragment;
+import student.curtin.assignment1.fragment.user.LaunchPageFragment;
+import student.curtin.assignment1.fragment.user.LoginFragment;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Restaurant;
@@ -49,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
             fm.beginTransaction().add(R.id.main_body, homeFrag).commit();
         }
 
-        // Consider observing User in viewModel to implement log in/out button
-
+        /*** DEPRECATED
         viewModel.restSelection.observe(this, new Observer<Restaurant>() {
             @Override
             public void onChanged(@Nullable Restaurant restaurant) {
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                 changeFrag(fragment);
             }
-        });
+        });***/
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -95,7 +96,14 @@ public class MainActivity extends AppCompatActivity {
                         changeFrag(fragment);
                         break;
                     case R.id.nav_orders:
+                        if(viewModel.getUser().getEmail().equals(""))
+                        {
+                            fragment = new LaunchPageFragment();
+                        }
+                        else
+                        {
                         fragment = new OrderHistoryFragment();
+                        }
                         changeFrag(fragment);
                         break;
                 }

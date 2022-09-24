@@ -52,7 +52,7 @@ public class OrderHistoryFragment extends Fragment {
         private List<Order> orderList;
 
         public OrderHistoryAdapter() {
-            this.orderList = DBHandler.getInstance(getContext()).getOrderHistoryList();
+            this.orderList = DBHandler.getInstance(getContext()).getOrderHistoryList(viewModel.getUser().getEmail());
         }
 
         @Override

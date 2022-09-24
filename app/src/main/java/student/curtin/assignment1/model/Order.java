@@ -23,10 +23,11 @@ public class Order {
     // Can be called by fragments and from DB Handler to create sample records
     public void addToDB(DBHandler dbHandler)
     {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy mm:HH");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime dateTime = LocalDateTime.now();
+        this.dateTime = dtf.format(dateTime);
 
-        dbHandler.addOrderHistory_DB(email, restName, itemCount, totalCost, dtf.format(dateTime), foodList);
+        dbHandler.addOrderHistory_DB(email, restName, itemCount, totalCost, this.dateTime, foodList);
     }
 
     public void setFoodList(LinkedList<Food> foodList) {
@@ -39,6 +40,8 @@ public class Order {
         }
     }
 
+    public void setDateTime(String dateTime) {this.dateTime = dateTime;}
+
     public String getEmail(){ return this.email;}
 
     public String getRestName(){ return this.restName;}
@@ -50,5 +53,4 @@ public class Order {
     public String getDateTime() {return this.dateTime;}
 
     public LinkedList<Food> getFoodList(){ return this.foodList;}
-
 }

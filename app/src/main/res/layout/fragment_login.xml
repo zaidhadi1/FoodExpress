@@ -20,13 +20,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/title2"
+        app:layout_constraintBottom_toTopOf="@+id/login_info"
         android:padding="10dp"
 
         />
 
         <TextView
-            android:id="@+id/title2"
+            android:id="@+id/login_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/welcome_back_title"
@@ -38,32 +38,32 @@
             app:layout_constraintTop_toBottomOf="@id/welcome_back_title"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/usernameLabel"
+            app:layout_constraintBottom_toTopOf="@id/emailLabel"
             android:padding="10dp"
             />
 
                     <TextView
-                        android:id="@+id/usernameLabel"
+                        android:id="@+id/emailLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:textSize="15sp"
                         android:text="Email"
                         android:textColor="@color/black"
-                        app:layout_constraintTop_toBottomOf="@id/title2"
+                        app:layout_constraintTop_toBottomOf="@id/login_info"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/username"
+                        app:layout_constraintBottom_toTopOf="@id/email"
                         android:padding="10dp"
                         android:layout_marginTop="20dp"/>
 
-                   <TextView
-                       android:id="@+id/username"
+                   <EditText
+                       android:id="@+id/email"
                        android:layout_width="370dp"
                        android:layout_height="wrap_content"
                        android:background="@drawable/username_input"
                        android:textColor="@color/black"
-                       app:layout_constraintTop_toBottomOf="@id/usernameLabel"
+                       app:layout_constraintTop_toBottomOf="@id/emailLabel"
                        app:layout_constraintRight_toRightOf="parent"
                        app:layout_constraintLeft_toLeftOf="parent"
                        app:layout_constraintBottom_toTopOf="@id/passwordLabel"
@@ -77,12 +77,12 @@
                        android:textSize="15sp"
                        android:text="Password"
                        android:textColor="@color/black"
-                       app:layout_constraintTop_toBottomOf="@id/username"
+                       app:layout_constraintTop_toBottomOf="@id/email"
                        app:layout_constraintRight_toRightOf="parent"
                        app:layout_constraintLeft_toLeftOf="parent"
                        app:layout_constraintBottom_toTopOf="@id/password"
                        android:padding="10dp"/>
-                   <TextView
+                   <EditText
                        android:id="@+id/password"
                        android:layout_width="370dp"
                        android:layout_height="wrap_content"

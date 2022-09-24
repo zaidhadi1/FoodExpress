@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import student.curtin.assignment1.MainActivity;
@@ -46,27 +47,30 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 DBHandler dbHandler = DBHandler.getInstance(getContext());
-                String email = (String) emailBox.getText();
-                String password = (String) passwordBox.getText();
-                String confirmPassword = (String) passwordBox.getText();
+                String email = emailBox.getText().toString();
+                String password = passwordBox.getText().toString();
+                String confirmPassword = passwordBox2.getText().toString();
+                if(!(email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()))
+                {
+                    if (!dbHandler.checkUserExists(email)) {
 
-                if(!dbHandler.checkUserExists(email)) {
-
-                    if(password.equals(confirmPassword)) {
-                        dbHandler.addUser_DB(email, password);
-                        Fragment frag = new LaunchPageFragment();
-                        MainActivity.changeFrag(frag);
-                    }
-                    else
-                    {
+                        if (password.equals(confirmPassword)) {
+                            dbHandler.addUser_DB(email, password);
+                            Fragment frag = new LaunchPageFragment();
+                            MainActivity.changeFrag(frag);
+                        } else {
+                            register_info.setTextColor(R.color.red);
+                            register_info.setText("ERROR : Passwords do not match.");
+                        }
+                    } else {
                         register_info.setTextColor(R.color.red);
-                        register_info.setText("ERROR : PASSWORDS DO NOT MATCH.");
+                        register_info.setText("ERROR : User already exists.");
                     }
                 }
                 else
                 {
                     register_info.setTextColor(R.color.red);
-                    register_info.setText("ERROR : USER ALREADY EXISTS");
+                    register_info.setText("ERROR : All fields must be filled.");
                 }
             }
         });

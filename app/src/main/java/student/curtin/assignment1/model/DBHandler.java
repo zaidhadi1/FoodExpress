@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Bundle;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -55,6 +56,10 @@ public class DBHandler extends SQLiteOpenHelper {
                 DBSchema.FoodOrder.Cols.FOODPRICE + " TEXT, " +
                 DBSchema.FoodOrder.Cols.FOODQUANT + " TEXT)");
 
+        db.execSQL("CREATE TABLE " + DBSchema.UserTable.TABLE_NAME + "(" +
+                DBSchema.UserTable.Cols.EMAIL + " TEXT, " +
+                DBSchema.UserTable.Cols.PASSWORD + " TEXT)");
+
         updateRestaurants(db);
         updateFoodItemTable(db);
         updateUserTable(db);
@@ -75,9 +80,8 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(DBSchema.Restaurant.Cols.REST_NAME, restName);
         cv.put(DBSchema.Restaurant.Cols.REST_IMAGE, restImage);
-        try {
-            db.insertOrThrow(DBSchema.Restaurant.TABLE_NAME, null, cv);
-        } catch (SQLException e) { }
+
+        db.insert(DBSchema.Restaurant.TABLE_NAME, null, cv);
     }
 
     // Adds Food to Database
@@ -87,10 +91,8 @@ public class DBHandler extends SQLiteOpenHelper {
         cv.put(DBSchema.FoodItem.Cols.FOODIMAGE, foodImage);
         cv.put(DBSchema.FoodItem.Cols.FOODPRICE, price);
         cv.put(DBSchema.FoodItem.Cols.RESTAURANT, restName);
-        try
-        {
-            db.insertOrThrow(DBSchema.FoodItem.TABLE_NAME, null, cv);
-        } catch (SQLException e){}
+
+        db.insert(DBSchema.FoodItem.TABLE_NAME, null, cv);
 
     }
 
@@ -105,11 +107,7 @@ public class DBHandler extends SQLiteOpenHelper {
         cv.put(DBSchema.OrderHistory.Cols.TOTALCOST, totalCost);
         cv.put(DBSchema.OrderHistory.Cols.DATETIME, time);
 
-        try
-        {
-            db.insertOrThrow(DBSchema.OrderHistory.TABLE_NAME, null, cv);
-        } catch (SQLException e){}
-
+        db.insert(DBSchema.OrderHistory.TABLE_NAME, null, cv);
         addFoodOrder_DB(db, email, time, foodList);
     }
 
@@ -126,10 +124,7 @@ public class DBHandler extends SQLiteOpenHelper {
             cv.put(DBSchema.FoodOrder.Cols.FOODPRICE, f.getPrice());
             cv.put(DBSchema.FoodOrder.Cols.FOODQUANT, f.getQuantity());
 
-            try
-            {
-                db.insertOrThrow(DBSchema.FoodOrder.TABLE_NAME, null, cv);
-            } catch (SQLException e){}
+            db.insert(DBSchema.FoodOrder.TABLE_NAME, null, cv);
         }
     }
 
@@ -307,13 +302,15 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
 
-    public LinkedList<Order> getOrderHistoryList()
+    public LinkedList<Order> getOrderHistoryList(String email)
     {
+        String[] where = {email};
         LinkedList<Order> orderList = new LinkedList<Order>();
 
         // Gains access to Database and Initialises Cursor
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(DBSchema.OrderHistory.TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = db.query(DBSchema.OrderHistory.TABLE_NAME, null,
+                DBSchema.OrderHistory.Cols.EMAIL + " = ?", where, null, null, null);
 
         try
         {
@@ -323,6 +320,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 Order order = new Order(cursor.getString(0),cursor.getString(1));
                 LinkedList<Food> foodList = (getFoodOrderList(order.getEmail(), cursor.getString(4), order.getRestName()));
                 order.setFoodList(foodList);
+                order.setDateTime(cursor.getString(4));
+                orderList.add(order);
                 cursor.moveToNext();
             }
         }
@@ -350,8 +349,8 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             while(!cursor.isAfterLast())
             {
-                Food food = new Food(cursor.getString(0),cursor.getInt(1), cursor.getDouble(2), restName);
-                food.setQuantity(cursor.getInt(3));
+                Food food = new Food(cursor.getString(2),cursor.getInt(3), cursor.getDouble(4), restName);
+                food.setQuantity(cursor.getInt(5));
                 foodList.add(food);
                 cursor.moveToNext();
             }
@@ -626,66 +625,66 @@ public class DBHandler extends SQLiteOpenHelper {
         addUser_DB(db,"User2@gmail.com","User2");
     }
 
-    private void updateOrderHistoryTable(SQLiteDatabase db)
-    {
-        Order order;
-
-        /*** FORMAT:
-         * Order order = new Order(*PUT EMAIL HERE*, *PUT RESTAURANT NAME HERE*);
-         * order.setFoodList(getRandFood(order.getRestName(), *PUT TOTAL QUANTITY HERE*));
-         * DO NOT MAKE CHANGES TO THE LAST LINE
-         */
-
-        order = new Order("User1@gmail.com","ABC");
-        order.setFoodList(getRandFood(order.getRestName(), 12));
-        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
-                order.getTotalCost(), order.getDateTime(), order.getFoodList());
-
-        order = new Order("User1@gmail.com","KFC");
-        order.setFoodList(getRandFood(order.getRestName(), 8));
-        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
-                order.getTotalCost(), order.getDateTime(), order.getFoodList());
-
-        order = new Order("User2@gmail.com","ABC");
-        order.setFoodList(getRandFood(order.getRestName(), 10));
-        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
-                order.getTotalCost(), order.getDateTime(), order.getFoodList());
-
-        order = new Order("User2@gmail.com","KFC");
-        order.setFoodList(getRandFood(order.getRestName(), 6));
-        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
-                order.getTotalCost(), order.getDateTime(), order.getFoodList());
-
-        order = new Order("User2@gmail.com","McDonalds");
-        order.setFoodList(getRandFood(order.getRestName(), 1));
-        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
-                order.getTotalCost(), order.getDateTime(), order.getFoodList());
-
-    }
-
-
-    // Helper for generating random order's for updateOrderHistoryTable()
-    private LinkedList<Food> getRandFood(String restName, int itemCount)
-    {
-        LinkedList<Food> foodList = new LinkedList<>();
-        LinkedList<Food> randFoodList = new LinkedList<>();
-        Random rng = new Random();
-
-        while(itemCount > 0 || randFoodList.size() == foodList.size()) {
-            Food f = foodList.get(rng.nextInt(foodList.size()));
-
-            if (!randFoodList.contains(f)) {
-                while (f.getQuantity() <= 0) {
-                    f.setQuantity(rng.nextInt(itemCount));
-                }
-
-                itemCount -= f.getQuantity();
-                randFoodList.add(f);
-
-            }
-        }
-
-        return randFoodList;
-    }
+//    private void updateOrderHistoryTable(SQLiteDatabase db)
+//    {
+//        Order order;
+//
+//        /*** FORMAT:
+//         * Order order = new Order(*PUT EMAIL HERE*, *PUT RESTAURANT NAME HERE*);
+//         * order.setFoodList(getRandFood(order.getRestName(), *PUT TOTAL QUANTITY HERE*));
+//         * DO NOT MAKE CHANGES TO THE LAST LINE
+//         */
+//
+//        order = new Order("User1@gmail.com","ABC");
+//        order.setFoodList(getRandFood(order.getRestName(), 12));
+//        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
+//                order.getTotalCost(), order.getDateTime(), order.getFoodList());
+//
+//        order = new Order("User1@gmail.com","KFC");
+//        order.setFoodList(getRandFood(order.getRestName(), 8));
+//        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
+//                order.getTotalCost(), order.getDateTime(), order.getFoodList());
+//
+//        order = new Order("User2@gmail.com","ABC");
+//        order.setFoodList(getRandFood(order.getRestName(), 10));
+//        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
+//                order.getTotalCost(), order.getDateTime(), order.getFoodList());
+//
+//        order = new Order("User2@gmail.com","KFC");
+//        order.setFoodList(getRandFood(order.getRestName(), 6));
+//        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
+//                order.getTotalCost(), order.getDateTime(), order.getFoodList());
+//
+//        order = new Order("User2@gmail.com","McDonalds");
+//        order.setFoodList(getRandFood(order.getRestName(), 1));
+//        addOrderHistory_DB(order.getEmail(), order.getRestName(), order.getItemCount(),
+//                order.getTotalCost(), order.getDateTime(), order.getFoodList());
+//
+//    }
+//
+//
+//    // Helper for generating random order's for updateOrderHistoryTable()
+//    private LinkedList<Food> getRandFood(String restName, int itemCount)
+//    {
+//        LinkedList<Food> foodList = new LinkedList<>();
+//        LinkedList<Food> randFoodList = new LinkedList<>();
+//        Random rng = new Random();
+//
+//        while(itemCount > 0 || randFoodList.size() == foodList.size()) {
+//            Food f = foodList.get(rng.nextInt(foodList.size()));
+//
+//            if (!randFoodList.contains(f)) {
+//                while (f.getQuantity() <= 0) {
+//                    f.setQuantity(rng.nextInt(itemCount));
+//                }
+//
+//                itemCount -= f.getQuantity();
+//                randFoodList.add(f);
+//
+//            }
+//        }
+//
+//        return randFoodList;
+//    }
 }
 

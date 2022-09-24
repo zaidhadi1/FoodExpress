@@ -54,7 +54,7 @@
         app:layout_constraintBottom_toTopOf="@+id/new_email"
         android:padding="10dp"
         android:layout_marginTop="30dp"/>
-    <TextView
+    <EditText
         android:id="@+id/new_email"
         android:layout_width="370dp"
         android:layout_height="40dp"
@@ -79,7 +79,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/new_password"
         android:padding="10dp"/>
-    <TextView
+    <EditText
         android:id="@+id/new_password"
         android:layout_width="370dp"
         android:layout_height="40dp"
@@ -103,7 +103,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/confirm_password"
         android:padding="10dp"/>
-    <TextView
+    <EditText
         android:id="@+id/confirm_password"
         android:layout_width="370dp"
         android:layout_height="40dp"
