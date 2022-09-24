@@ -67,9 +67,11 @@ public class CheckoutFragment extends Fragment {
     private class CheckoutAdapter extends RecyclerView.Adapter<CheckoutViewHolder>{
 
         private List<Food> foodList;
+        private double totalCost;
 
         public CheckoutAdapter() {
             foodList = viewModel.getCart().getFoodList();
+            totalCost = 0;
         }
 
         @Override
@@ -77,6 +79,17 @@ public class CheckoutFragment extends Fragment {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View view = layoutInflater.inflate(R.layout.fragment_checkout_item,parent,false);
             CheckoutViewHolder checkoutViewHolder = new CheckoutViewHolder(view, parent);
+
+            for(Food f: this.foodList)
+            {
+                totalCost += f.getPrice() * f.getQuantity();
+            }
+
+            TextView total = parent.findViewById(R.id.final_total_result);
+            TextView subtotal = parent.findViewById(R.id.subtotal_result);
+
+            total.setText(Double.toString(totalCost));
+            subtotal.setText(Double.toString(totalCost));
 
             checkoutViewHolder.plusButton.setOnClickListener(new View.OnClickListener() {
                 @Override

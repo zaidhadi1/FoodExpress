@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.LaunchPageFragment"
+    tools:context=".fragment.user.LaunchPageFragment"
     android:background="@drawable/launch_background" >
 
 
@@ -47,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/signup_button"
-        android:text="SIGNUP"
+        android:text="REGISTER"
         android:textColor="@color/white"
         />
 </LinearLayout>

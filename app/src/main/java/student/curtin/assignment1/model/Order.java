@@ -20,6 +20,7 @@ public class Order {
         this.dateTime = "";
     }
 
+    // Can be called by fragments and from DB Handler to create sample records
     public void addToDB(DBHandler dbHandler)
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy mm:HH");
@@ -49,10 +50,5 @@ public class Order {
     public String getDateTime() {return this.dateTime;}
 
     public LinkedList<Food> getFoodList(){ return this.foodList;}
-
-    private void setdateTime(String dateTime)
-    {
-        this.dateTime = dateTime;
-    }
 
 }

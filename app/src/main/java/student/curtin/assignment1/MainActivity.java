@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CommonData viewModel;
     private DBHandler dbHandler;
-    private FragmentManager fm;
+    private static FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,12 +48,15 @@ public class MainActivity extends AppCompatActivity {
             homeFrag = new HomeFragment();
             fm.beginTransaction().add(R.id.main_body, homeFrag).commit();
         }
-        viewModel.restaurantChoice.observe(this, new Observer<Restaurant>() {
+
+        // Consider observing User in viewModel to implement log in/out button
+
+        viewModel.restSelection.observe(this, new Observer<Restaurant>() {
             @Override
             public void onChanged(@Nullable Restaurant restaurant) {
                 Fragment fragment;
 
-                if(viewModel.getChoice() == null)
+                if(viewModel.getRestSelection() == null)
                 {
                     fragment = new RestaurantFragment();
                 }
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         changeFrag(fragment);
                         break;
                     case R.id.nav_browse:
-                        if(viewModel.getChoice() == null)
+                        if(viewModel.getRestSelection() == null)
                         {
                             fragment = new RestaurantFragment();
                         }
@@ -102,9 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void changeFrag(Fragment fragment)
+    public static void changeFrag(Fragment fragment)
     {
-        fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.main_body, fragment).commit();
     }
 

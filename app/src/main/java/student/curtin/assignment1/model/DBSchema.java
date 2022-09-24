@@ -27,7 +27,7 @@ public class DBSchema
                 public static final String RESTAURANT = "restaurant";
                 public static final String ITEMCOUNT = "itemCount";
                 public static final String TOTALCOST = "cost";
-                public static final String TIME = "time";
+                public static final String DATETIME = "date_time";
             }
         }
 

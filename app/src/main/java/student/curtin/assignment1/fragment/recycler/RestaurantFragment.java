@@ -88,7 +88,7 @@ public class RestaurantFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     viewModel.setCart(new Cart());
-                    viewModel.setChoice(restaurant);
+                    viewModel.setRestSelection(restaurant);
                 }
             });
         }

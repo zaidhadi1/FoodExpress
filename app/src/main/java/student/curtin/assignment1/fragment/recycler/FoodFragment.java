@@ -47,12 +47,13 @@ public class FoodFragment extends Fragment {
         TextView restTitle = view.findViewById(R.id.restaurant_title);
         Button backButton = view.findViewById(R.id.back_button);
 
-        restTitle.setText(viewModel.getChoice().getRestName());
+        restTitle.setText(viewModel.getRestSelection().getRestName());
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.resetChoice();
+                // MainActivity Observes this and sends user to Back to Restaurant list
+                viewModel.resetRestSelection();
             }
         });
 
@@ -68,7 +69,7 @@ public class FoodFragment extends Fragment {
         public FoodAdapter()
         {
             foodList = DBHandler.getInstance(getContext())
-                .getRestFoodList(viewModel.getChoice().getRestName());
+                .getRestFoodList(viewModel.getRestSelection().getRestName());
 
             cart = viewModel.getCart();
         }
