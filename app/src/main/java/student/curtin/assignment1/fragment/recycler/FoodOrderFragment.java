@@ -38,8 +38,8 @@ public class FoodOrderFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_foodOrder, container, false);
-        RecyclerView rv = view.findViewById(R.id.foodOrder_recView);
+        View view = inflater.inflate(R.layout.fragment_foodorder, container, false);
+        RecyclerView rv = view.findViewById(R.id.foodorder_recView);
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         FoodOrderAdapter adapter = new FoodOrderAdapter();
         rv.setAdapter(adapter);
