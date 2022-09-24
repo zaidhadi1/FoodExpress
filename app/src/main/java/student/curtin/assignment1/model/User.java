@@ -1,5 +1,7 @@
 package student.curtin.assignment1.model;
 
+import android.database.sqlite.SQLiteDatabase;
+
 public class User {
     private String email;
     private String password;
