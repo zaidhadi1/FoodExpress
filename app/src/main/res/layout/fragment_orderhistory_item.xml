@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:background="@color/white">
+    android:background="@drawable/rounded_restaurant" >
 
     <TextView
         android:id="@+id/restName"
@@ -14,6 +14,7 @@
         android:text="Restaurant"
         android:textColor="@color/black"
         android:textSize="18dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/restImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,39 +33,82 @@
         app:srcCompat="@android:color/black" />
 
     <TextView
-        android:id="@+id/totalCost"
+        android:id="@+id/dateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text="$Price"
-        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:text="12:00am"
+        android:textColor="#6c6c6c"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/restImage"
-        app:layout_constraintTop_toBottomOf="@id/restName" />
-
+        app:layout_constraintTop_toBottomOf="@id/itemCount" />
+<!-->
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="9 August"
+        android:textColor="#6c6c6c"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/time"
+        app:layout_constraintTop_toBottomOf="@id/itemCount" />
+        </!-->
     <TextView
         android:id="@+id/itemCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:text="0 items"
-        android:textColor="@color/dark_grey"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/restName"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_marginBottom="10dp"
+        android:text="1"
+        android:textColor="#6c6c6c"
+        android:textSize="12dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintLeft_toRightOf="@id/restImage"
+        app:layout_constraintTop_toBottomOf="@id/restName"
+        />
     <TextView
-        android:id="@+id/dateTime"
+        android:id="@+id/itemCount_Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date/Time"
-        android:textColor="@color/dark_grey"
-        android:textSize="10dp"
-        app:layout_constraintStart_toStartOf="@+id/itemCount"
-        app:layout_constraintTop_toBottomOf="@+id/itemCount" />
+        android:layout_marginBottom="10dp"
+        android:text="   •"
+        android:textColor="#6c6c6c"
+        android:textSize="12dp"
+        android:layout_marginLeft="2dp"
+        app:layout_constraintLeft_toRightOf="@id/itemCount"
+        app:layout_constraintTop_toBottomOf="@id/restName"
+        />
+
+    <TextView
+        android:id="@+id/totalCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="$14.00"
+        android:textColor="#6c6c6c"
+        android:textSize="12dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintLeft_toRightOf="@id/itemCount_Label"
+        app:layout_constraintTop_toBottomOf="@id/restName"
+        />
+
+
+    <TextView
+        android:id="@+id/forwardArrow"
+        android:layout_width="21dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/forward_button2"
+        android:gravity="center_vertical"
+        android:textSize="17dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
