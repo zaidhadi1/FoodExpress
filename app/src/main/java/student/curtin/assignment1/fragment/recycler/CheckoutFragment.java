@@ -26,6 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import student.curtin.assignment1.fragment.user.LoginFragment;
+import student.curtin.assignment1.fragment.user.OrderSuccessfulFragment;
 import student.curtin.assignment1.model.Cart;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
@@ -82,7 +83,7 @@ public class CheckoutFragment extends Fragment {
                         order.addToDB(DBHandler.getInstance(getContext()));
 
                         viewModel.resetCart();
-                        MainActivity.changeFrag(new HomeFragment());
+                        MainActivity.changeFrag(new OrderSuccessfulFragment());
                     }
                 }
             }

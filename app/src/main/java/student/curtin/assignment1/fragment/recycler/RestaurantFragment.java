@@ -56,7 +56,18 @@ public class RestaurantFragment extends Fragment {
         public RestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
             View view = layoutInflater.inflate(R.layout.fragment_restaurant_item,parent,false);
-            return new RestViewHolder(view, parent);
+            RestViewHolder vh = new RestViewHolder(view, parent);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    viewModel.setCart(new Cart());
+                    viewModel.setRestSelection(restaurantList.get(vh.getAdapterPosition()));
+                    MainActivity.changeFrag(new FoodFragment());
+                }
+            });
+
+            return vh;
         }
 
         @Override
@@ -85,14 +96,6 @@ public class RestaurantFragment extends Fragment {
         {
             restText.setText(restaurant.getRestName());
             restImage.setImageResource(restaurant.getRestImage());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    viewModel.setCart(new Cart());
-                    viewModel.setRestSelection(restaurant);
-                    MainActivity.changeFrag(new FoodFragment());
-                }
-            });
         }
     }
 }
