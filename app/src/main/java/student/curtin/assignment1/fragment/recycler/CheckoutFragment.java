@@ -83,6 +83,7 @@ public class CheckoutFragment extends Fragment {
                         order.addToDB(DBHandler.getInstance(getContext()));
 
                         viewModel.resetCart();
+                        viewModel.resetRestSelection();
                         MainActivity.changeFrag(new OrderSuccessfulFragment());
                     }
                 }
