@@ -23,7 +23,6 @@ import student.curtin.assignment1.R;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Restaurant;
 
-/** WORK IN PROGRESS**/
 public class RestaurantFragment extends Fragment {
 
     private CommonData viewModel;
@@ -48,7 +47,7 @@ public class RestaurantFragment extends Fragment {
 
     private class RestAdapter extends RecyclerView.Adapter<RestViewHolder> {
 
-        private List<Restaurant> restaurantList;
+        private final List<Restaurant> restaurantList;
 
         public RestAdapter(){this.restaurantList = DBHandler.getInstance(getContext()).getRestaurantList();}
 

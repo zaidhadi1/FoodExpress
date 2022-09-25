@@ -50,7 +50,7 @@ public class OrderHistoryFragment extends Fragment {
 
     private class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryViewHolder>
     {
-        private List<Order> orderList;
+        private final List<Order> orderList;
 
         public OrderHistoryAdapter() {
             this.orderList = DBHandler.getInstance(getContext()).getOrderHistoryList(viewModel.getUser().getEmail());

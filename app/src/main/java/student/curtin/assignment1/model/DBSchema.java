@@ -1,7 +1,5 @@
 package student.curtin.assignment1.model;
 
-import java.sql.Blob;
-
 public class DBSchema
 {
         public static class Restaurant{
@@ -23,21 +21,21 @@ public class DBSchema
         }
 
         public static class OrderHistory{
-            public static final String TABLE_NAME = "orderHistory";
+            public static final String TABLE_NAME = "order_history";
             public static class Cols{
                 public static final String EMAIL = "email";
                 public static final String RESTAURANT = "restaurant";
-                public static final String ITEMCOUNT = "itemCount";
-                public static final String TOTALCOST = "cost";
+                public static final String ITEMCOUNT = "item_count";
+                public static final String TOTALCOST = "total_cost";
                 public static final String DATETIME = "date_time";
             }
         }
 
         public static class FoodOrder{
-            public static final String TABLE_NAME = "foodOrder";
+            public static final String TABLE_NAME = "food_order";
             public static class Cols{
                 public static final String EMAIL = "email";
-                public static final String TIME = "time";
+                public static final String DATE_TIME = "date_time";
                 public static final String FOODNAME = "food_name";
                 public static final String FOODIMAGE = "food_image";
                 public static final String FOODPRICE = "food_price";

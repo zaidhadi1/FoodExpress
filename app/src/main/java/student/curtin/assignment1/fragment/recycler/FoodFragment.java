@@ -24,7 +24,6 @@ import student.curtin.assignment1.R;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Food;
 
-/** WORK IN PROGRESS **/
 public class FoodFragment extends Fragment {
 
     private CommonData viewModel;
@@ -63,8 +62,8 @@ public class FoodFragment extends Fragment {
 
     private class FoodAdapter extends RecyclerView.Adapter<FoodViewHolder>{
 
-        private List<Food> foodList;
-        private Cart cart;
+        private final List<Food> foodList;
+        private final Cart cart;
 
         public FoodAdapter()
         {

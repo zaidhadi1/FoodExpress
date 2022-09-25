@@ -36,7 +36,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 DBSchema.Restaurant.Cols.REST_IMAGE + " TEXT)");
 
         db.execSQL("CREATE TABLE " + DBSchema.FoodItem.TABLE_NAME + "(" +
-                DBSchema.FoodItem.Cols.FOODNAME + " TEXT UNIQUE, " +
+                DBSchema.FoodItem.Cols.FOODNAME + " TEXT, " +
                 DBSchema.FoodItem.Cols.FOODIMAGE + " TEXT, " +
                 DBSchema.FoodItem.Cols.FOODPRICE + " TEXT, " +
                 DBSchema.FoodItem.Cols.RESTAURANT + " TEXT)");
@@ -50,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + DBSchema.FoodOrder.TABLE_NAME + "(" +
                 DBSchema.FoodOrder.Cols.EMAIL + " TEXT, " +
-                DBSchema.FoodOrder.Cols.TIME + " TEXT, " +
+                DBSchema.FoodOrder.Cols.DATE_TIME + " TEXT, " +
                 DBSchema.FoodOrder.Cols.FOODNAME + " TEXT, " +
                 DBSchema.FoodOrder.Cols.FOODIMAGE + " TEXT," +
                 DBSchema.FoodOrder.Cols.FOODPRICE + " TEXT, " +
@@ -118,7 +118,7 @@ public class DBHandler extends SQLiteOpenHelper {
         {
             cv = new ContentValues();
             cv.put(DBSchema.FoodOrder.Cols.EMAIL, email);
-            cv.put(DBSchema.FoodOrder.Cols.TIME, time);
+            cv.put(DBSchema.FoodOrder.Cols.DATE_TIME, time);
             cv.put(DBSchema.FoodOrder.Cols.FOODNAME, f.getFoodName());
             cv.put(DBSchema.FoodOrder.Cols.FOODIMAGE, f.getImage());
             cv.put(DBSchema.FoodOrder.Cols.FOODPRICE, f.getPrice());
@@ -349,7 +349,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DBSchema.FoodOrder.TABLE_NAME,
                 null,
-                DBSchema.FoodOrder.Cols.EMAIL + " = ? AND " + DBSchema.FoodOrder.Cols.TIME + " = ?", where, null, null, null);
+                DBSchema.FoodOrder.Cols.EMAIL + " = ? AND " + DBSchema.FoodOrder.Cols.DATE_TIME + " = ?", where, null, null, null);
 
         try
         {

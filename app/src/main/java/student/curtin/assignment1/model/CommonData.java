@@ -18,7 +18,6 @@ public class CommonData extends ViewModel
 
         this.cart.setValue(new Cart());
         this.user.setValue(new User());
-        //this.restaurantChoice.setValue(null);
     }
 
     public Restaurant getRestSelection() {

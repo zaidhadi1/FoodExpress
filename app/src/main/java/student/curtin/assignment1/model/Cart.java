@@ -3,7 +3,7 @@ package student.curtin.assignment1.model;
 import java.util.LinkedList;
 
 public class Cart {
-    private LinkedList<Food> cart;
+    private final LinkedList<Food> cart;
 
     public Cart()
     {
@@ -37,9 +37,6 @@ public class Cart {
             }
         }
 
-//        Food f = cart.remove(index);
-//        f.setQuantity(inFood.getQuantity());
-//        cart.add(f);
         cart.get(index).setQuantity(inFood.getQuantity());
     }
 

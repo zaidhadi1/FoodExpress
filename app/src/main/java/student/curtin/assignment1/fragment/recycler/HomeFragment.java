@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
 
     private class HomeAdapter extends RecyclerView.Adapter<HomeViewHolder>{
 
-        private List<Food> foodList;
+        private final List<Food> foodList;
         public HomeAdapter(){
 
             foodList = new LinkedList<Food>();

@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 
 public class Order {
-    private String email;
-    private String restName;
+    private final String email;
+    private final String restName;
     private int itemCount = 0;
     private double totalCost = 0;
     private String dateTime;
@@ -20,7 +20,6 @@ public class Order {
         this.dateTime = "";
     }
 
-    // Can be called by fragments and from DB Handler to create sample records
     public void addToDB(DBHandler dbHandler)
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm    dd/MM/yyyy");
@@ -51,6 +50,4 @@ public class Order {
     public double getTotalCost(){ return this.totalCost;}
 
     public String getDateTime() {return this.dateTime;}
-
-    public LinkedList<Food> getFoodList(){ return this.foodList;}
 }

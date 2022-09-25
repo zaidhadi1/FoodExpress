@@ -1,4 +1,4 @@
-package student.curtin.assignment1.fragment.user;
+package student.curtin.assignment1.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import student.curtin.assignment1.model.User;
 public class OrderSuccessfulFragment extends Fragment {
 
     private CommonData viewModel;
-    private final int CHECKOUT_SUCCESSFUL_TIMEOUT = 4000;
+    private final int CHECKOUT_SUCCESSFUL_TIMEOUT = 4000; // Time in milliseconds
 
     public OrderSuccessfulFragment() {}
 

@@ -28,7 +28,6 @@ import student.curtin.assignment1.model.Restaurant;
 public class MainActivity extends AppCompatActivity {
 
     private CommonData viewModel;
-    private DBHandler dbHandler;
     private static BottomNavigationView bottomNavigationView;
     private static FragmentManager fm;
 
@@ -38,10 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // create dbhandler class
-        dbHandler = DBHandler.getInstance(this);
         viewModel = new ViewModelProvider(this).get(CommonData.class);
-
         bottomNavigationView = findViewById(R.id.bottom_navbar);
 
         fm = getSupportFragmentManager();

@@ -17,22 +17,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import student.curtin.assignment1.fragment.user.LoginFragment;
-import student.curtin.assignment1.fragment.user.OrderSuccessfulFragment;
+import student.curtin.assignment1.fragment.OrderSuccessfulFragment;
 import student.curtin.assignment1.model.Cart;
 import student.curtin.assignment1.model.CommonData;
 import student.curtin.assignment1.model.DBHandler;
 import student.curtin.assignment1.model.Food;
 import student.curtin.assignment1.model.Order;
-import student.curtin.assignment1.model.User;
 
 /** NOT FINAL **/
 public class CheckoutFragment extends Fragment {

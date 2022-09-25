@@ -3,8 +3,8 @@ package student.curtin.assignment1.model;
 import android.database.sqlite.SQLiteDatabase;
 
 public class User {
-    private String email;
-    private String password;
+    private final String email;
+    private final String password;
 
 
     public User()
@@ -17,11 +17,6 @@ public class User {
     {
         this.email = username;
         this.password = password;
-    }
-
-    public void addToDB(DBHandler dbHandler)
-    {
-        dbHandler.addUser_DB(email, password);
     }
 
     public String getEmail(){ return email;}

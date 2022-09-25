@@ -71,7 +71,7 @@ public class FoodOrderFragment extends Fragment {
 
     private class FoodOrderAdapter extends RecyclerView.Adapter<FoodOrderViewHolder> {
 
-        private List<Food> foodList;
+        private final List<Food> foodList;
 
         public FoodOrderAdapter() {
             Order order = viewModel.getOrderSelection();
