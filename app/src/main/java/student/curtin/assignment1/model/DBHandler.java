@@ -393,7 +393,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private void updateRestaurants(SQLiteDatabase db)
     {
         /* Format: db, Restaurant Name, Restaurant Image */
-
         addRestaurant_DB(db,"McDonalds", R.mipmap.mcdonalds);
         addRestaurant_DB(db,"Terrace Cafe", R.mipmap.terracecafe);
         addRestaurant_DB(db,"Zambrero", R.mipmap.zambreros);
@@ -415,7 +414,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private void updateFoodItemTable(SQLiteDatabase db)
     {
         /* Format: db, Food Name, Food Image, Food Price, Restaurant Name) */
-
         addFood_DB(db,"Quarter-Pounder", R.mipmap.quarterpounder, 8.50 ,"McDonalds");
         addFood_DB(db,"Cheeseburger", R.mipmap.cheeseburger, 8.50 ,"McDonalds");
         addFood_DB(db,"Classic Angus", R.mipmap.classicangus, 8.50 ,"McDonalds");

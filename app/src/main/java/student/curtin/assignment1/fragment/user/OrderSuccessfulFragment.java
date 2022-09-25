@@ -25,7 +25,7 @@ import student.curtin.assignment1.model.User;
 public class OrderSuccessfulFragment extends Fragment {
 
     private CommonData viewModel;
-    private final int CHECKOUT_SUCCESSFUL_TIMEOUT = 2000;
+    private final int CHECKOUT_SUCCESSFUL_TIMEOUT = 4000;
 
     public OrderSuccessfulFragment() {}
 
@@ -37,7 +37,7 @@ public class OrderSuccessfulFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout./*INSERT XML FILE HERE*/, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_successful, container, false);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
