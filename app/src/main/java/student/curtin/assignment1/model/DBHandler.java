@@ -330,7 +330,14 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.close();
         }
 
-        return orderList;
+        LinkedList<Order> finalOrderList = new LinkedList<Order>();
+
+        for(int i = orderList.size() - 1; i >= 0; i--)
+        {
+            finalOrderList.add(orderList.get(i));
+        }
+
+        return finalOrderList;
     }
 
     public LinkedList<Food> getFoodOrderList(String email, String time, String restName)
