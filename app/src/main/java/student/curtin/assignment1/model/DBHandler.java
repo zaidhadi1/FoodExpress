@@ -10,6 +10,8 @@ import android.os.Bundle;
 import java.util.LinkedList;
 import java.util.Random;
 
+import student.curtin.assignment1.R;
+
 public class DBHandler extends SQLiteOpenHelper {
 
     private static DBHandler instance = null;
@@ -394,7 +396,7 @@ public class DBHandler extends SQLiteOpenHelper {
     {
         /* Format: db, Restaurant Name, Restaurant Image */
 
-        addRestaurant_DB(db,"McDonalds", android.R.color.black);
+        addRestaurant_DB(db,"McDonalds", R.mipmap.mcdonalds);
         addRestaurant_DB(db,"Terrace Cafe", android.R.color.black);
         addRestaurant_DB(db,"Zambrero", android.R.color.black);
         addRestaurant_DB(db,"Dominos", android.R.color.black);
@@ -420,7 +422,7 @@ public class DBHandler extends SQLiteOpenHelper {
         addFood_DB(db,"Cheeseburger", android.R.color.black, 8.50 ,"McDonalds");
         addFood_DB(db,"Classic Angus", android.R.color.black, 8.50 ,"McDonalds");
         addFood_DB(db,"Fillet-o-fish", android.R.color.black, 4.50 ,"McDonalds");
-        addFood_DB(db,"Big Mac", android.R.color.black, 9.50 ,"McDonalds");
+        addFood_DB(db,"Big Mac", R.mipmap.bigmac, 9.50 ,"McDonalds");
         addFood_DB(db,"Mc Chicken", android.R.color.black, 7.50 ,"McDonalds");
         addFood_DB(db,"Hashbrown", android.R.color.black, 2.00 ,"McDonalds");
         addFood_DB(db,"Nuggets 4pc", android.R.color.black, 3.50 ,"McDonalds");
