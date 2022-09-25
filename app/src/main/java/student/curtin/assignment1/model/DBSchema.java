@@ -1,5 +1,7 @@
 package student.curtin.assignment1.model;
 
+import java.sql.Blob;
+
 public class DBSchema
 {
         public static class Restaurant{
